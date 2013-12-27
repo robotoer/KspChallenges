@@ -36,20 +36,32 @@ namespace KspChallenges {
   /// </summary>
   class ChallengeSelectionWindow {
     /// <summary>Default coordinates for this window.</summary>
-    public const Rect defaultRect = new Rect(20, 20, 120, 50);
+    public const Rect DefaultRect = new Rect(20, 20, 120, 50);
+    public readonly List<Challenge> Challenges;
 
     public ChallengeSelectionWindow() {
       // Start loading challenges.
+      this.Challenges = new List<Challenge>() {
+        //new Challenge(new Predicate("ship.altitude"), new Predicate("ship.altitude"), 10.0)
+      };
 
       // Display challenges.
-      GUILayout.Window(0, defaultRect, InitChallengeSelectionWindow, "Challenge Selection");
+      GUILayout.Window(0, DefaultRect, OnGui, "Challenge Selection");
     }
 
-    private void InitChallengeSelectionWindow(int windowId) {
+    private void OnGui(int windowId) {
+      Vector2 scrollPosition = new Vector2();
+
       // Create challenges list.
-      //   Add columns.
-      //   Add scrollbar.
-      //   Convert challenge to short display.
+      GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(640.0f), GUILayout.Height(480.0f));
+
+      // Add columns.
+      // Add scrollbar.
+      // Convert challenge to short display.
+      foreach (Challenge challenge in Challenges) {
+        if (GUILayout.Button(challenge.Name))
+          ;
+      }
 
       // Create challenge details panel.
       //   Convert challenge to detail display.

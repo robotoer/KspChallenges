@@ -5,5 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace KspChallenges {
-  interface Expression { }
+  interface Expression<T> {
+    T Result { get; }
+  }
 }

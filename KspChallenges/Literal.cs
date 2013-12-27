@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace KspChallenges {
-  class Literal : Expression {
-    enum Unit {
+  class Literal : Expression<double> {
+    public static enum Unit {
       KiloMeters,
       Meters,
       MetersPerSecond,
@@ -22,6 +22,10 @@ namespace KspChallenges {
     public Literal(double value, Unit units) {
       this.Value = value;
       this.Units = units;
+    }
+
+    public double Result {
+      get { return Value; }
     }
   }
 }

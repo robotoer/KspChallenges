@@ -46,12 +46,12 @@ namespace KspChallenges {
     ///   - example: <![CDATA[{ "type": "and", "parameters": [{ "type": "greaterthan", "parameters": [..."]]>
     ///   - example: <![CDATA[<and><greaterthan>...</greaterthan></and>]]>
     /// </summary>
-    public readonly Expression Goal;
+    public readonly Expression<bool> Goal;
 
     /// <summary>
     /// Same representation as goal, but is interpreted as a "must be true" goal.
     /// </summary>
-    public readonly Expression Constraint;
+    public readonly Expression<bool> Constraint;
 
     /// <summary>
     /// Reward for the player. Could consist of one or more of the following:
@@ -68,5 +68,22 @@ namespace KspChallenges {
     // - Start date (real world)
     // - Expiration date (real world)
     // - Mods allowed
+
+    public readonly string Name;
+    public readonly string Description;
+
+    public Challenge(
+      Expression<bool> goal,
+      Expression<bool> constraint,
+      double reward,
+      string name,
+      string description
+    ) {
+      this.Goal = goal;
+      this.Constraint = constraint;
+      this.Reward = reward;
+      this.Name = name;
+      this.Description = description;
+    }
   }
 }
